@@ -2,6 +2,7 @@
    Code Wave Landing Page — stylesheet
    ============================================ */
 
+/* ========== TOKENS ========== */
 /* ----- 1. Tokens / Root ----- */
 :root {
   --bg: #050816;
@@ -21,6 +22,7 @@
   --max-width: 1240px;
 }
 
+/* ========== RESET & BASE ========== */
 /* ----- 2. Reset / Base ----- */
 * {
   box-sizing: border-box;
@@ -64,6 +66,7 @@ ul {
   padding: 0;
 }
 
+/* ========== BACKGROUND ========== */
 /* ----- 3. Background ----- */
 .site-bg {
   position: fixed;
@@ -102,6 +105,7 @@ ul {
   background: rgba(128, 84, 255, 0.16);
 }
 
+/* ========== LAYOUT ========== */
 /* ----- 4. Layout ----- */
 .container {
   width: min(calc(100% - 32px), var(--max-width));
@@ -126,6 +130,7 @@ ul {
   backdrop-filter: blur(18px);
 }
 
+/* ========== TYPOGRAPHY ========== */
 /* ----- 5. Typography ----- */
 h1, h2, h3, h4 {
   margin: 0;
@@ -178,6 +183,7 @@ p {
   background: linear-gradient(90deg, var(--primary), var(--secondary));
 }
 
+/* ========== HEADER & NAV ========== */
 /* ----- 6. Header / Nav / Brand ----- */
 .site-header {
   position: sticky;
@@ -205,16 +211,16 @@ p {
 }
 
 .brand-logo {
-  width: 180px;
+  width: 300px;
   height: auto;
-  max-height: 48px;
+  max-height: 80px;
   object-fit: contain;
 }
 
 .brand-wordmark {
-  width: 140px;
+  width: 220px;
   height: auto;
-  max-height: 32px;
+  max-height: 48px;
   object-fit: contain;
 }
 
@@ -265,6 +271,7 @@ p {
   transition: transform .2s ease, opacity .2s ease;
 }
 
+/* ========== BUTTONS ========== */
 /* ----- 7. Buttons ----- */
 .btn {
   display: inline-flex;
@@ -305,6 +312,7 @@ p {
   width: 100%;
 }
 
+/* ========== HERO ========== */
 /* ----- 8. Hero ----- */
 .hero {
   padding-top: 56px;
@@ -335,6 +343,7 @@ p {
   border-radius: 24px;
 }
 
+/* ========== CONVERSION STRIP ========== */
 /* ----- 9. Conversion strip ----- */
 .conversion-strip {
   display: flex;
@@ -376,6 +385,7 @@ p {
   font-weight: 900;
 }
 
+/* ========== TRUST GRID ========== */
 /* ----- 10. Trust grid ----- */
 .trust-grid {
   display: grid;
@@ -404,6 +414,7 @@ p {
   font-size: 0.94rem;
 }
 
+/* ========== GLASS CARD ========== */
 /* ----- 11. Glass card (shared) ----- */
 .glass-card {
   background: linear-gradient(180deg, rgba(10, 17, 40, 0.88), rgba(7, 12, 28, 0.9));
@@ -412,6 +423,7 @@ p {
   backdrop-filter: blur(18px);
 }
 
+/* ========== TICKER ========== */
 /* ----- 12. Ticker ----- */
 .ticker-row {
   display: grid;
@@ -436,6 +448,7 @@ p {
   font-weight: 700;
 }
 
+/* ========== SECTION HEADINGS ========== */
 /* ----- 13. Section headings ----- */
 .section-heading {
   max-width: 860px;
@@ -457,6 +470,7 @@ p {
   font-size: 0.98rem;
 }
 
+/* ========== PROBLEM ========== */
 /* ----- 14. Problem section ----- */
 .problem-section {
   padding-top: 64px;
@@ -494,6 +508,7 @@ p {
   color: var(--muted);
 }
 
+/* ========== SOLUCOES ========== */
 /* ----- 15. Solutions grid ----- */
 .solution-grid,
 .feature-grid {
@@ -523,6 +538,7 @@ p {
   margin-bottom: 12px;
 }
 
+/* ========== PACOTES ========== */
 /* ----- 16. Packages section ----- */
 .packages-section {
   position: relative;
@@ -632,6 +648,7 @@ p {
   font-weight: 900;
 }
 
+/* ========== SHOWCASE ========== */
 /* ----- 17. Showcase section ----- */
 .showcase-section {
   position: relative;
@@ -719,6 +736,7 @@ p {
   object-fit: cover;
 }
 
+/* ========== PORTFOLIO ========== */
 /* ----- 18. Portfolio section ----- */
 .portfolio-section {
   padding-top: 68px;
@@ -1007,6 +1025,7 @@ p {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
 }
 
+/* ========== PROCESSO ========== */
 /* ----- 19. Process section ----- */
 .process-section {
   background: rgba(255, 255, 255, 0.015);
@@ -1038,6 +1057,7 @@ p {
   margin-bottom: 12px;
 }
 
+/* ========== FAQ ========== */
 /* ----- 20. FAQ section ----- */
 .faq-grid {
   display: grid;
@@ -1068,6 +1088,7 @@ p {
   margin-top: 14px;
 }
 
+/* ========== CTA ========== */
 /* ----- 21. CTA section ----- */
 .cta-section {
   padding-top: 24px;
@@ -1082,6 +1103,7 @@ p {
   gap: 24px;
 }
 
+/* ========== CONTATO ========== */
 /* ----- 22. Contact / Form ----- */
 .contact-grid {
   display: grid;
@@ -1143,6 +1165,7 @@ p {
   box-shadow: 0 0 0 4px rgba(47, 211, 255, 0.08);
 }
 
+/* ========== FOOTER ========== */
 /* ----- 23. Footer ----- */
 .site-footer {
   padding: 28px 0 40px;
@@ -1166,6 +1189,7 @@ p {
   outline-offset: 4px;
 }
 
+/* ========== WHATSAPP FLOAT ========== */
 /* ----- 24. WhatsApp float ----- */
 .whatsapp-float {
   position: fixed;
@@ -1215,6 +1239,8 @@ p {
 /* ============================================
    Responsive — Desktop first
    ============================================ */
+
+/* ========== RESPONSIVO ========== */
 
 /* ----- 1120px ----- */
 @media (max-width: 1120px) {
@@ -1382,8 +1408,8 @@ p {
   }
 
   .brand-logo {
-    width: 140px;
-    max-height: 38px;
+    width: 200px;
+    max-height: 60px;
   }
 
   .btn {
