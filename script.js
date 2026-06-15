@@ -233,9 +233,68 @@ CodeWave.setupPortfolio = function () {
   });
 };
 
+/**
+ * Sets up portfolio category filters.
+ * @returns {void}
+ */
+CodeWave.setupPortfolioFilters = function () {
+  const filters = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('[data-portfolio-card]');
+  if (!filters.length || !cards.length) return;
+
+  filters.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const filter = btn.getAttribute('data-filter');
+
+      // Update active state on filter buttons
+      filters.forEach(function (f) {
+        f.classList.remove('is-active');
+        f.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-selected', 'true');
+
+      // Filter cards
+      cards.forEach(function (card) {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.classList.remove('is-hidden');
+        } else {
+          card.classList.add('is-hidden');
+        }
+      });
+    });
+  });
+};
+
+/**
+ * Sets up ticker button navigation — scrolls to relevant sections.
+ * @returns {void}
+ */
+CodeWave.setupTicker = function () {
+  const tickerBtns = document.querySelectorAll('.ticker-btn');
+  if (!tickerBtns.length) return;
+
+  tickerBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const targetId = btn.getAttribute('data-scroll-to');
+      if (!targetId) return;
+
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      const header = document.querySelector('.site-header');
+      const offset = header ? header.offsetHeight + 14 : 0;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+    });
+  });
+};
+
 /* ---- Boot ---- */
 CodeWave.setCurrentYear();
 CodeWave.setupTracking();
 CodeWave.setupMobileMenu();
 CodeWave.setupSmoothScroll();
 CodeWave.setupPortfolio();
+CodeWave.setupPortfolioFilters();
+CodeWave.setupTicker();

@@ -438,7 +438,7 @@ p {
   display: none;
 }
 
-.ticker-row span {
+.ticker-btn {
   padding: 12px 18px;
   border-radius: 999px;
   white-space: nowrap;
@@ -446,6 +446,23 @@ p {
   border: 1px solid rgba(255,255,255,0.06);
   color: #cfe0ff;
   font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  outline-offset: 3px;
+  font-family: 'Manrope', system-ui, sans-serif;
+}
+
+.ticker-btn:hover {
+  background: rgba(47, 211, 255, 0.12);
+  border-color: rgba(47, 211, 255, 0.35);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(47, 211, 255, 0.12);
+}
+
+.ticker-btn:active {
+  transform: translateY(0) scale(0.97);
 }
 
 /* ========== SECTION HEADINGS ========== */
@@ -1064,6 +1081,49 @@ p {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
 }
 
+/* ========== PORTFOLIO FILTERS ========== */
+.portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  outline-offset: 3px;
+  font-family: 'Manrope', system-ui, sans-serif;
+}
+
+.filter-btn:hover {
+  border-color: rgba(47, 211, 255, 0.3);
+  color: var(--text);
+  background: rgba(47, 211, 255, 0.06);
+}
+
+.filter-btn.is-active {
+  border-color: rgba(47, 211, 255, 0.5);
+  background: linear-gradient(135deg, rgba(47, 211, 255, 0.15), rgba(122, 92, 255, 0.1));
+  color: var(--primary);
+  box-shadow: 0 0 24px rgba(47, 211, 255, 0.1);
+}
+
+/* Hidden portfolio cards */
+.portfolio-card.is-hidden {
+  display: none;
+}
+
 /* ========== PROCESSO ========== */
 /* ----- 19. Process section ----- */
 .process-section {
@@ -1461,6 +1521,130 @@ p {
 
   .footer-wrap {
     align-items: flex-start;
+  }
+}
+
+/* ----- 540px Mobile Optimization ----- */
+@media (max-width: 540px) {
+  .section {
+    padding: 48px 0;
+  }
+
+  .section-soft {
+    padding: 14px 0;
+  }
+
+  .section-heading {
+    margin-bottom: 24px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.3rem, 6vw, 1.65rem);
+  }
+
+  .section-heading p {
+    font-size: 0.88rem;
+    margin-top: 8px;
+  }
+
+  .hero {
+    padding-top: 28px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .trust-grid article {
+    padding: 14px;
+  }
+
+  .trust-grid strong {
+    font-size: 0.92rem;
+  }
+
+  .trust-grid span {
+    font-size: 0.85rem;
+  }
+
+  .process-card {
+    padding: 14px;
+  }
+
+  .process-card span {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+
+  .faq-list details {
+    padding: 14px 16px;
+  }
+
+  .cta-box {
+    flex-direction: column;
+    padding: 22px;
+  }
+
+  .cta-box h2 {
+    font-size: 1.3rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .contact-form {
+    padding: 20px;
+  }
+
+  .packages-section {
+    contain-intrinsic-size: auto;
+  }
+
+  .portfolio-carousel__viewport {
+    min-height: 860px;
+  }
+
+  .portfolio-slide .portfolio-shot {
+    max-height: 240px;
+  }
+
+  .portfolio-slide .portfolio-shot img {
+    min-height: 180px;
+  }
+
+  .portfolio-panel {
+    padding: 16px;
+  }
+
+  .portfolio-panel h3 {
+    font-size: 1.2rem;
+  }
+
+  .case-facts div {
+    padding: 10px 10px 10px 28px;
+  }
+
+  .case-facts dt {
+    font-size: 0.7rem;
+  }
+
+  .case-facts dd {
+    font-size: 0.85rem;
+  }
+
+  .whatsapp-float {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    min-height: 52px;
+    padding: 8px 14px;
+    border-radius: 14px;
+  }
+
+  .whatsapp-float strong {
+    font-size: 0.9rem;
   }
 }
 
