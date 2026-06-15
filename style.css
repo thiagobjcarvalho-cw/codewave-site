@@ -855,19 +855,20 @@ p {
   position: absolute;
   inset: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.75fr);
+  grid-template-columns: 1.5fr 1fr;
   gap: 24px;
   align-items: stretch;
   opacity: 0;
   pointer-events: none;
-  transform: translateX(18px);
-  transition: opacity .28s ease, transform .28s ease;
+  transform: translateY(12px) scale(0.98);
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .portfolio-slide.is-active {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(0);
+  transform: translateY(0) scale(1);
 }
 
 .portfolio-shot {
@@ -891,7 +892,9 @@ p {
   justify-content: center;
   padding: 28px;
   border-radius: 24px;
-  background: rgba(4, 9, 24, 0.58);
+  background: rgba(4, 9, 24, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(117, 148, 255, 0.16);
 }
 
@@ -926,10 +929,11 @@ p {
   display: inline-flex;
   align-items: center;
   min-height: 34px;
-  padding: 0 12px;
+  padding: 0 14px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: linear-gradient(135deg, rgba(47, 211, 255, 0.1), rgba(122, 92, 255, 0.08));
+  border: 1px solid rgba(47, 211, 255, 0.18);
+  box-shadow: 0 0 20px rgba(47, 211, 255, 0.05);
   color: #d7e4ff;
   font-size: 0.82rem;
   font-weight: 800;
@@ -942,10 +946,21 @@ p {
 }
 
 .case-facts div {
-  padding: 14px;
+  position: relative;
+  padding: 16px 16px 16px 38px;
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 14px;
   background: rgba(255,255,255,0.035);
+}
+
+.case-facts div::before {
+  content: '✓';
+  position: absolute;
+  left: 14px;
+  top: 16px;
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: var(--accent);
 }
 
 .case-facts dt {
@@ -964,6 +979,22 @@ p {
   line-height: 1.48;
 }
 
+/* Highlight cards for Solucao and Diferencial (sistema-type projects) */
+.case-facts .highlight-card {
+  border-color: rgba(47, 211, 255, 0.3);
+  background: linear-gradient(135deg, rgba(47, 211, 255, 0.08), rgba(122, 92, 255, 0.06));
+  box-shadow: 0 0 30px rgba(47, 211, 255, 0.06);
+}
+
+.case-facts .highlight-card dt {
+  color: var(--accent);
+}
+
+.case-facts .highlight-card::before {
+  content: '✦';
+  color: var(--primary);
+}
+
 .portfolio-controls {
   position: relative;
   z-index: 2;
@@ -977,27 +1008,35 @@ p {
 .portfolio-nav {
   display: inline-grid;
   place-items: center;
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  border: 1px solid rgba(47, 211, 255, 0.24);
-  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(47, 211, 255, 0.2);
+  background: rgba(10, 17, 40, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   color: var(--text);
   cursor: pointer;
-  transition: transform .2s ease, border-color .2s ease, background .2s ease;
+  transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
   outline-offset: 3px;
 }
 
 .portfolio-nav:hover {
-  transform: translateY(-2px);
+  transform: scale(1.1);
   border-color: rgba(47, 211, 255, 0.55);
-  background: rgba(47, 211, 255, 0.08);
+  background: rgba(47, 211, 255, 0.12);
+  box-shadow: 0 8px 40px rgba(47, 211, 255, 0.2);
+}
+
+.portfolio-nav:active {
+  transform: scale(0.95);
 }
 
 .portfolio-nav span {
   display: block;
   margin-top: -3px;
-  font-size: 2rem;
+  font-size: 2.2rem;
   line-height: 1;
 }
 
@@ -1422,6 +1461,78 @@ p {
 
   .footer-wrap {
     align-items: flex-start;
+  }
+}
+
+/* ----- 768px (portfolio mobile) ----- */
+@media (max-width: 768px) {
+  .portfolio-slide {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-slide .portfolio-shot {
+    max-height: 320px;
+  }
+
+  .portfolio-slide .portfolio-shot img {
+    min-height: 240px;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .portfolio-slide .portfolio-panel {
+    padding: 20px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .portfolio-slide .portfolio-panel h3 {
+    font-size: 1.35rem;
+    margin: 12px 0 10px;
+  }
+
+  .portfolio-slide .case-facts {
+    margin-top: 16px;
+    gap: 10px;
+  }
+
+  .portfolio-slide .case-facts div {
+    padding: 12px 12px 12px 32px;
+  }
+
+  .portfolio-slide .case-facts div::before {
+    left: 10px;
+    top: 12px;
+    font-size: 0.75rem;
+  }
+
+  .portfolio-slide .portfolio-meta {
+    margin-top: 16px;
+    gap: 6px;
+  }
+
+  .portfolio-slide .portfolio-meta span {
+    min-height: 28px;
+    padding: 0 10px;
+    font-size: 0.75rem;
+  }
+
+  .portfolio-nav {
+    width: 44px;
+    height: 44px;
+  }
+
+  .portfolio-nav span {
+    font-size: 1.6rem;
+  }
+
+  .portfolio-dots button {
+    width: 9px;
+    height: 9px;
+  }
+
+  .portfolio-dots button.is-active {
+    width: 26px;
   }
 }
 
