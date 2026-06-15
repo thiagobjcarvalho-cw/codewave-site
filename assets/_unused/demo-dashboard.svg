@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="620" viewBox="0 0 720 620">
+  <defs>
+    <linearGradient id="g" x1="60" y1="45" x2="655" y2="576"><stop stop-color="#0f172a"/><stop offset="1" stop-color="#1e40af"/></linearGradient>
+  </defs>
+  <rect width="720" height="620" rx="44" fill="url(#g)"/>
+  <rect x="56" y="58" width="608" height="488" rx="30" fill="#f8fafc"/>
+  <rect x="56" y="58" width="148" height="488" rx="30" fill="#0f172a"/>
+  <circle cx="130" cy="112" r="23" fill="#06b6d4"/>
+  <rect x="94" y="165" width="72" height="12" rx="6" fill="#334155"/>
+  <rect x="94" y="204" width="86" height="12" rx="6" fill="#334155"/>
+  <rect x="94" y="243" width="66" height="12" rx="6" fill="#334155"/>
+  <rect x="246" y="100" width="180" height="28" rx="14" fill="#0f172a"/>
+  <rect x="246" y="162" width="116" height="96" rx="22" fill="#dbeafe"/>
+  <rect x="386" y="162" width="116" height="96" rx="22" fill="#cffafe"/>
+  <rect x="526" y="162" width="96" height="96" rx="22" fill="#e0f2fe"/>
+  <path d="M262 416c35-86 89-78 124-32s76 44 118-45 74-80 103-25" fill="none" stroke="#2563eb" stroke-width="14" stroke-linecap="round"/>
+  <path d="M262 454h342" stroke="#cbd5e1" stroke-width="10" stroke-linecap="round"/>
+  <rect x="246" y="301" width="376" height="190" rx="28" fill="#fff" stroke="#dbeafe" stroke-width="4"/>
+  <circle cx="306" cy="210" r="22" fill="#2563eb"/>
+  <circle cx="446" cy="210" r="22" fill="#06b6d4"/>
+  <circle cx="574" cy="210" r="22" fill="#38bdf8"/>
+</svg>
