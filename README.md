@@ -37,8 +37,8 @@ Projeto 100% estatico (HTML + CSS + JS), sem framework, bundler ou dependencias 
 ## Onde alterar dados de contato
 
 - **WhatsApp**: substituir `5561982859870` em todos os links `wa.me/55...` no `index.html` (hero, header, pacotes, CTA, contato, botao flutuante)
-- **E-mail**: alterar `contato@codewave.com.br` no `index.html` (link mailto e action do FormSubmit)
-- **FormSubmit**: a action do formulario ja aponta para `https://formsubmit.co/contato@codewave.com.br` — trocar o e-mail na URL ao publicar
+- **E-mail**: alterar `thiago.b.j.carvalho@gmail.com` no `index.html` (link mailto e action do FormSubmit)
+- **FormSubmit**: a action do formulario ja aponta para `https://formsubmit.co/thiago.b.j.carvalho@gmail.com` — manter este e-mail
 
 ## Como rodar localmente
 

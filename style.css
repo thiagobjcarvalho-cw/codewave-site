@@ -746,8 +746,8 @@ p {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
 }
 
 .portfolio-card {
@@ -1062,6 +1062,71 @@ p {
   border-radius: 999px;
   border-color: transparent;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+/* ========== PORTFOLIO UTILITIES ========== */
+
+/* Hidden cards (filtered out) */
+.portfolio-card.is-hidden {
+  display: none !important;
+}
+
+/* Extra cards (hidden until "Ver todos") */
+.portfolio-card.is-extra {
+  display: none;
+}
+
+.portfolio-grid.is-expanded .portfolio-card.is-extra {
+  display: flex;
+}
+
+/* Expand / collapse button */
+.portfolio-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 24px auto 0;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(47, 211, 255, 0.25);
+  background: rgba(10, 17, 40, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--primary);
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  outline-offset: 3px;
+}
+
+.portfolio-expand-btn:hover {
+  border-color: rgba(47, 211, 255, 0.5);
+  background: rgba(47, 211, 255, 0.08);
+  box-shadow: 0 0 30px rgba(47, 211, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.portfolio-expand-btn:active {
+  transform: scale(0.97);
+}
+
+.expand-arrow {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.expand-arrow path {
+  stroke: var(--primary);
+}
+
+/* Ticker button active */
+.ticker-btn.is-active {
+  background: linear-gradient(135deg, rgba(47, 211, 255, 0.15), rgba(122, 92, 255, 0.1));
+  border-color: rgba(47, 211, 255, 0.45);
+  color: var(--primary);
+  box-shadow: 0 0 20px rgba(47, 211, 255, 0.08);
 }
 
 /* ========== PROCESSO ========== */
@@ -1533,6 +1598,205 @@ p {
 
   .portfolio-dots button.is-active {
     width: 26px;
+  }
+}
+
+/* ----- 480px Compact Mobile ----- */
+@media (max-width: 480px) {
+  .section {
+    padding: 38px 0;
+  }
+
+  .section-soft {
+    padding: 10px 0;
+  }
+
+  .hero {
+    padding-top: 20px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .section-heading {
+    margin-bottom: 18px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.15rem, 5vw, 1.4rem);
+  }
+
+  .section-heading p {
+    font-size: 0.82rem;
+  }
+
+  .problem-grid {
+    gap: 10px;
+  }
+
+  .problem-grid .glass-card {
+    padding: 14px;
+  }
+
+  .problem-grid h3 {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    width: 100%;
+    min-height: 48px;
+    font-size: 0.85rem;
+  }
+
+  .ticker-wrap {
+    padding: 8px 0;
+  }
+
+  .ticker-btn {
+    font-size: 0.78rem;
+    min-height: 32px;
+    padding: 0 12px;
+  }
+
+  .portfolio-grid {
+    gap: 8px;
+  }
+
+  .portfolio-card {
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .portfolio-card strong {
+    font-size: 0.85rem;
+  }
+
+  .portfolio-card small {
+    font-size: 0.72rem;
+  }
+
+  .portfolio-expand-btn {
+    padding: 10px 20px;
+    font-size: 0.82rem;
+    margin: 16px auto 0;
+  }
+
+  .portfolio-carousel {
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  .portfolio-carousel__viewport {
+    min-height: 700px;
+  }
+
+  .portfolio-slide .portfolio-shot {
+    max-height: 180px;
+  }
+
+  .portfolio-slide .portfolio-shot img {
+    min-height: 140px;
+  }
+
+  .portfolio-panel {
+    padding: 14px;
+  }
+
+  .portfolio-panel h3 {
+    font-size: 1.05rem;
+  }
+
+  .case-facts div {
+    padding: 8px 8px 8px 22px;
+  }
+
+  .portfolio-nav {
+    width: 38px;
+    height: 38px;
+  }
+
+  .portfolio-nav span {
+    font-size: 1.3rem;
+  }
+
+  .portfolio-dots button {
+    width: 7px;
+    height: 7px;
+  }
+
+  .portfolio-dots button.is-active {
+    width: 20px;
+  }
+
+  .packages-section .btn {
+    font-size: 0.82rem;
+    min-height: 42px;
+    padding: 0 14px;
+  }
+
+  .process-card {
+    padding: 12px;
+  }
+
+  .process-card span {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .faq-list details {
+    padding: 12px 14px;
+  }
+
+  .faq-list summary {
+    font-size: 0.9rem;
+  }
+
+  .cta-box {
+    padding: 18px;
+    gap: 14px;
+  }
+
+  .cta-box h2 {
+    font-size: 1.15rem;
+  }
+
+  .contact-form {
+    padding: 16px;
+  }
+
+  .contact-form label {
+    font-size: 0.85rem;
+    margin-bottom: 14px;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    padding: 12px 14px;
+    font-size: 0.85rem;
+  }
+
+  .whatsapp-float {
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    min-height: 46px;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+
+  .whatsapp-float strong {
+    font-size: 0.82rem;
+  }
+
+  .site-footer {
+    padding: 20px 0 80px;
+  }
+
+  .footer-wrap {
+    gap: 12px;
   }
 }
 

@@ -233,9 +233,134 @@ CodeWave.setupPortfolio = function () {
   });
 };
 
+/* ---- Ticker filters ---- */
+/**
+ * Makes ticker buttons filter the portfolio section.
+ * Each ticker button has data-filter="category". Clicking scrolls
+ * to #projetos and activates the matching category filter.
+ * @returns {void}
+ */
+CodeWave.setupTickerFilters = function () {
+  const tickerBtns = document.querySelectorAll('.ticker-btn[data-filter]');
+  const filterBtns = document.querySelectorAll('.filter-btn[data-filter]');
+  const projetos = document.getElementById('projetos');
+  if (!tickerBtns.length) return;
+
+  const header = document.querySelector('.site-header');
+  const getOffset = function () {
+    return header ? header.offsetHeight + 14 : 0;
+  };
+
+  tickerBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const filter = btn.getAttribute('data-filter');
+
+      // Toggle is-active on ticker buttons
+      tickerBtns.forEach(function (b) {
+        b.classList.toggle('is-active', b === btn);
+      });
+
+      // Activate matching portfolio filter button
+      filterBtns.forEach(function (fb) {
+        const fbFilter = fb.getAttribute('data-filter');
+        var isMatch = filter === 'all' ? fbFilter === 'all' : (fbFilter === filter);
+        fb.classList.toggle('is-active', isMatch);
+        fb.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+      });
+
+      // Filter portfolio cards
+      document.querySelectorAll('[data-portfolio-card]').forEach(function (card) {
+        var cat = card.getAttribute('data-category') || '';
+        var show = filter === 'all' || cat === filter;
+        card.classList.toggle('is-hidden', !show);
+      });
+
+      // Scroll to portfolio section
+      if (projetos) {
+        const top = projetos.getBoundingClientRect().top + window.scrollY - getOffset();
+        window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+      }
+
+      CodeWave.trackEvent('ticker_filter', { filter: filter });
+    });
+  });
+};
+
+/* ---- Portfolio expand ---- */
+/**
+ * Expands/collapses the extra portfolio cards (those with is-extra class).
+ * @returns {void}
+ */
+CodeWave.setupPortfolioExpand = function () {
+  const btn = document.querySelector('[data-expand-portfolio]');
+  if (!btn) return;
+
+  btn.addEventListener('click', function () {
+    const grid = document.querySelector('.portfolio-grid');
+    if (!grid) return;
+
+    var isExpanded = grid.classList.contains('is-expanded');
+    grid.classList.toggle('is-expanded', !isExpanded);
+
+    // Toggle button text
+    var showText = btn.querySelector('.expand-text');
+    var hideText = btn.querySelector('.expand-text--less');
+    if (showText) showText.style.display = isExpanded ? '' : 'none';
+    if (hideText) hideText.style.display = isExpanded ? 'none' : '';
+
+    // Rotate arrow
+    var arrow = btn.querySelector('.expand-arrow');
+    if (arrow) {
+      arrow.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+
+    btn.setAttribute('aria-expanded', String(!isExpanded));
+    CodeWave.trackEvent('expand_portfolio', { expanded: String(!isExpanded) });
+  });
+};
+
+/* ---- Portfolio filter buttons ---- */
+/**
+ * Makes the filter buttons in the portfolio section work.
+ * @returns {void}
+ */
+CodeWave.setupPortfolioFilters = function () {
+  const filterBtns = document.querySelectorAll('.filter-btn[data-filter]');
+  if (!filterBtns.length) return;
+
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var filter = btn.getAttribute('data-filter');
+
+      // Toggle is-active on filter buttons
+      filterBtns.forEach(function (b) {
+        b.classList.toggle('is-active', b === btn);
+        b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+      });
+
+      // Also update ticker
+      document.querySelectorAll('.ticker-btn[data-filter]').forEach(function (tb) {
+        tb.classList.toggle('is-active', tb.getAttribute('data-filter') === filter);
+      });
+
+      // Filter cards
+      document.querySelectorAll('[data-portfolio-card]').forEach(function (card) {
+        var cat = card.getAttribute('data-category') || '';
+        var show = filter === 'all' || cat === filter;
+        card.classList.toggle('is-hidden', !show);
+      });
+
+      CodeWave.trackEvent('portfolio_filter', { filter: filter });
+    });
+  });
+};
+
 /* ---- Boot ---- */
 CodeWave.setCurrentYear();
 CodeWave.setupTracking();
 CodeWave.setupMobileMenu();
 CodeWave.setupSmoothScroll();
 CodeWave.setupPortfolio();
+CodeWave.setupTickerFilters();
+CodeWave.setupPortfolioExpand();
+CodeWave.setupPortfolioFilters();
